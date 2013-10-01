@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS</title>
+    <link rel="stylesheet" href="html5reset.css">
+    <link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+
+function divBuilder(){
+var breakSpace = '<br>';
+var classValue = document.getElementById('class_name').value;
+var classV = classValue.indexOf(".");
+if (classV == 0){
+    alert('No need to place the period');
+    document.getElementById('class_name').value = "";
+}
+if(classValue == ""){
+  classValue= classValue;
+}
+else {
+  classValue = "." + classValue;
+}
+var idValue = document.getElementById('id_name').value;
+var idV = idValue.indexOf("#");
+if (idV == 0){
+    alert('No need to place the #');
+    document.getElementById('id_name').value = "";
+
+}
+if(idValue == ""){
+  idValue = idValue;
+}
+else {
+  idValue = "#" + idValue;
+}
+
+//height and width section
+
+// height and width variables /////////////////////////////////////
+
+var height = parseInt(document.getElementById('height').value);
+var width = parseInt(document.getElementById('width').value);
+heightSelect = document.getElementById('selectHeight').value;
+widthSelect = document.getElementById('selectWidth').value;
+var widthChange = "";
+
+// height ///////////////////////////////////
+
+if (heightSelect == "--" || height == 'NaN'){
+
+  var heightChange = '';
+}
+
+if(document.getElementById('height').value == 'NaN'){
+    heightChange = '';
+}
+
+if (heightSelect == "px"){
+  var heightChange = 'height: ' + height + 'px;<br>';
+}
+
+if (heightSelect == "%"){
+  var heightChange = 'height: ' + height + '%;<br>';
+}
+
+if (heightSelect == "auto"){
+  var heightChange = 'height: auto;<br>';
+  document.getElementById('height').value = 0;
+}
+
+
+// width //////////////////////////////
+if (widthSelect == "--" || width == 'NaN'){
+
+  var widthChange = "";
+}
+
+if(document.getElementById('width').value == 'NaN'){
+    widthChange = '';
+}
+
+if (widthSelect == "px"){
+  var widthChange = 'width: '+width+'px;<br>';
+}
+
+if (widthSelect == "%"){
+  var widthChange = 'width: '+width+'%;<br>';
+}
+
+if (widthSelect == "auto"){
+  var widthChange = 'width: auto;<br>';
+  document.getElementById('width').value = 0;
+}
+
+
+
+
+
+
+
+
+//background color section/////////////////////
+// background color variables////////////////////
+
+var redValue = document.getElementById('bgRed').value;
+var greenValue = document.getElementById('bgGreen').value;
+var blueValue = document.getElementById('bgBlue').value;
+var alphaValue = parseFloat(document.getElementById('bgAlpha').value);
+var bgHex_numberValue = document.getElementById('bgHex_number').value;
+var typeOfColorChecked = document.getElementById('backgroundColor').value;
+
+if (redValue > 255){
+  document.getElementById('bgRed').value = 255;
+  redValue = 255;
+  alert('RGBA value must be between 0 and 255');
+}
+
+if (greenValue > 255){
+  document.getElementById('bgGreen').value = 255;
+  greenValue = 255;
+  alert('RGBA value must be between 0 and 255');
+}
+
+if (blueValue > 255){
+  document.getElementById('bgBlue').value = 255;
+  blueValue = 255;
+  alert('RGBA value must be between 0 and 255');
+}
+
+
+//background checkbox////////////////
+
+if (typeOfColorChecked == '--'){
+  document.getElementById('bgHex').style.display = "none";
+    document.getElementById('bgRgba').style.display = "none";
+    var rgbaColor = "";
+    var hexColor = "";
+
+}
+
+if (typeOfColorChecked == 'Hex#') {
+  document.getElementById('bgHex').style.display = "block";
+    document.getElementById('bgRgba').style.display = "none";
+    var rgbaColor = "";
+    var hexColor = 'background-color: ' + bgHex_numberValue+';<br>';
+}
+
+if (typeOfColorChecked == 'RGBA') {
+  document.getElementById('bgHex').style.display = "none";
+    document.getElementById('bgRgba').style.display = "block"
+    var rgbaColor = 'background-color: rgba('+redValue+',' +greenValue+',' +blueValue+',' +alphaValue+');<br>';
+    var hexColor = "";
+}
+
+
+
+
+
+
+
+// border radius /////////////////////////////////
+var topLeftValue = parseInt(document.getElementById('borderTopLeft').value);
+var topRightValue = parseInt(document.getElementById('borderTopRight').value);
+var bottomRightValue = parseInt(document.getElementById('borderBorderRight').value);
+var bottomLeftValue = parseFloat(document.getElementById('borderBottomLeft').value);
+
+if(topLeftValue == 0 && topRightValue == 0 && bottomRightValue == 0 && bottomLeftValue == 0){
+  bordervalue = "";
+}
+
+else {
+  var bordervalue = 'border-radius:'+ topLeftValue + 'px '+ topRightValue +'px '+ bottomRightValue +'px '+ bottomLeftValue +'px;<br>-webkit-border-radius:'+ topLeftValue + 'px '+ topRightValue +'px '+ bottomRightValue +'px '+ bottomLeftValue +'px;<br>';
+}
+
+
+
+
+
+// box shadow ////////////////////////////////////////
+
+var insetSelect = document.getElementById('insetType').value;
+var horLengthValue = parseInt(document.getElementById('horizontalLength').value);
+var vertLengthValue = parseInt(document.getElementById('verticalLength').value);
+var blurValue = parseInt(document.getElementById('blurRadius').value);
+var spreadValue = parseInt(document.getElementById('spread').value);
+var shadowRedValue = parseInt(document.getElementById('shadowRed').value);
+var shadowGreenValue = parseInt(document.getElementById('shadowGreen').value);
+var shadowBlueValue = parseInt(document.getElementById('shadowBlue').value);
+var shadowAlphaValue = parseInt(document.getElementById('shadowAlpha').value);
+var shadowHexValue = document.getElementById('shadowHexNumber').value;
+var shadowColorSelect = document.getElementById('shadow_color').value;
+var boxShadowComplete = "";
+if(insetSelect == "--"){
+  var inset = "";
+}
+
+if(insetSelect == "Inset"){
+  var inset = "inset ";
+}
+
+if(insetSelect == "No"){
+  var inset = "";
+}
+
+if (shadowColorSelect == '--'){
+  document.getElementById('shadowHex').style.display = "none";
+  document.getElementById('shadowRgba').style.display = "none";
+  shadowRgbaValue = "";
+  shadowHexValue = "";
+}
+
+if (shadowColorSelect == 'Hex#'){
+  document.getElementById('shadowHex').style.display = "block";
+  document.getElementById('shadowRgba').style.display = "none";
+  var shadowRgbaValue = "";
+  var shadowHexValue = shadowHexValue;
+}
+
+if (shadowColorSelect == 'RGBA'){
+  document.getElementById('shadowHex').style.display = "none";
+  document.getElementById('shadowRgba').style.display = "block";
+  var shadowRgbaValue = 'color: rgba('+shadowRedValue+','+shadowGreenValue+','+shadowBlueValue+','+shadowAlphaValue+')';
+
+
+}
+
+if (insetSelect == "--" && horLengthValue == 0 && vertLengthValue == 0 && blurValue == 0 && spreadValue == 0 && shadowColorSelect == '--'){
+  boxShadowComplete = "";
+}
+
+else {
+  boxShadowComplete = 'box-shadow: '+inset+horLengthValue+'px '+vertLengthValue+'px '+blurValue+'px '+spreadValue+'px '+shadowRgbaValue+shadowHexValue+';<br>';
+}
+
+
+
+
+
+
+
+
+
+
+var preview = '<style> #preview_box{'+ heightChange + widthChange + rgbaColor + hexColor + bordervalue + boxShadowComplete + '}</style>';
+var previewReplace = preview.replace(/<br>/g,"");
+
+
+document.getElementById('preview_box').innerHTML = previewReplace;
+
+document.getElementById('code_box').innerHTML = classValue + idValue + '{<br>' + heightChange + widthChange + rgbaColor + hexColor + bordervalue +boxShadowComplete+'}'
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+</head>
+<body>
+	<div id="wrapper">
+		<h1 id="title">CSS3 Div Generator</h1>
+
+		<p id="directions">This tool is to make your life a little easier when creating yourself a div that may have a background-color, border-radius, or even a box-shadow. Using this tool can make it easier to visualize the div, once you have the div the way you want it just copy the code that is generated. Click to check each CSS properties you would like to be apart of the div, if you don’t need it go ahead and leave it blank. You will only get the code you need.  </p>
+
+
+	<div class="section_inputs">
+
+        <div id="div_container">
+        <label>div class Name</label><input type="text" id="class_name" onblur ="divBuilder()">
+        <label>div id Name</label><input type="text" id="id_name" onblur ="divBuilder()">
+        </div>
+        <div id="height_width">
+        <h1>Height and Width</h1>
+	 <label>Height</label>
+   <input type="number" id="height" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()">
+   <select id="selectHeight" onchange="divBuilder()">
+   <option>--</option>
+   <option>px</option>
+   <option>%</option>
+   <option>auto</option>
+   </select><br>
+	 <label>Width</label>
+	 <input type="number" id="width" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()">
+	 <select id="selectWidth" onchange="divBuilder()">
+   <option>--</option>
+   <option>px</option>
+   <option>%</option>
+   <option>auto</option>
+   </select><br>
+
+            </div>
+        <div id="background_color"><!--start of background color-->
+
+
+    <h1>Background Color:</h1>
+    <label>Color Type:</label>
+	 <select id="backgroundColor" onchange="divBuilder()">
+	 <option>--</option>
+	 <option>Hex#</option>
+	 <option>RGBA</option>
+	 </select><br>
+
+
+     <div id="bgHex">
+       <label>Hex#</label><input type="color" id="bgHex_number" value="0" onchange ="divBuilder()"><br>
+     </div>
+     <div id="bgRgba">
+	 <label>Red</label><input type="number" id="bgRed" value="0" min="0" max="255" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Green</label><input type="number" id="bgGreen" value="0" min="0" max="255" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Blue</label><input type="number" id="bgBlue" value="0" min="0" max="255" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Alpha</label><input type="number" id="bgAlpha" value="1" step="0.1" min="0" max="1" onclick ="divBuilder()" onblur="divBuilder()">
+   <p>Alpha will be 0.1 to 1</p>
+     </div>
+</div> <!--end of background color-->
+
+
+        <div id="border_radius">
+        <h1>Border Radius</h1>
+        <label>Top Left</label><input type="number" id="borderTopLeft" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Top Right</label><input type="number" id="borderTopRight" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Bottom Right</label><input type="number" id="borderBorderRight" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Bottom Left</label><input type="number" id="borderBottomLeft" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()">
+            </div>
+
+
+
+        <div id="box_shadow">
+	<h1>Box Shadow</h1>
+    <label>Inset:</label><select id="insetType" onchange="divBuilder()"><option>--</option><option>Inset</option><option>No</option></select><br>
+	 <label>Horizontal Length</label><input type="number" id="horizontalLength" value="0"  onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Vertical Length</label><input type="number" id="verticalLength" value="0"  onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Blur Radius</label><input type="number" id="blurRadius" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Spread</label><input type="number" id="spread" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+
+
+	 <label>Shadow Color:</label>
+	 <select id="shadow_color" onchange="divBuilder()">
+	 <option>--</option>
+	 <option>Hex#</option>
+	 <option>RGBA</option>
+	 </select><br>
+
+
+     <div id="shadowHex">
+       <label>Hex#</label><input type="color" id="shadowHexNumber" value="" onchange ="divBuilder()" onblur="divBuilder()"><br>
+     </div>
+     <div id="shadowRgba">
+	 <label>Red</label><input type="number" id="shadowRed" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Green</label><input type="number" id="shadowGreen" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Blue</label><input type="number" id="shadowBlue" value="0" min="0" onclick ="divBuilder()" onblur="divBuilder()"><br>
+	 <label>Alpha</label><input type="number" id="shadowAlpha" value="1" step="0.1" min="0" max="1" onclick ="divBuilder()" onblur="divBuilder()">
+     </div>
+</div>
+
+
+
+        </div>
+        <h1 id="codebox">CSS3 Code</h1>
+<div id="code_box">
+
+        </div>
+        <h1 id="preview">Preview Box</h1>
+        <div id="preview_box">
+        </div>
+	</div><!-- end of wrapper -->
+</body>
+</html>
